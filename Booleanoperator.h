@@ -5,12 +5,21 @@
 using namespace std;
 
 //this is the AND operation
-class BooleanOperator
+class ANDOperator
 {
     public:
     bool doOperation(bool a, bool b)
     {
         return a && b;
+    }
+};
+
+class OROperator 
+{
+    public:
+    bool doOperation(bool a, bool b)
+    {
+        return a || b;
     }
 };
 
