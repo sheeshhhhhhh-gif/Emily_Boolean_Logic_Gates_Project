@@ -8,52 +8,42 @@ using namespace std;
 class ANDOperator
 {
     public:
-    bool doOperation(bool a, bool b)
-    {
-        return a && b;
-    }
+    bool doOperation(bool a, bool b);
 };
 
 //this is the OR operation
 class OROperator 
 {
     public:
-    bool doOperation(bool a, bool b)
-    {
-        return a || b;
-    }
+    bool doOperation(bool a, bool b);
 };
 
 //this is the XOR operation
 class XOROperator
 {
     public:
-    bool doOperation(bool a, bool b)
-    {
-        return a != b;
-    }
+    bool doOperation(bool a, bool b);
 };
 
 //this is the NAND operation
 class NANDOperator
 {
     public:
-    bool doOperation(bool a, bool b)
-    {
-        return !(a && b);
-    }
+    bool doOperation(bool a, bool b);
 };
 
 //this is the NOROperator
-class
+class NOROperator
 {
     public:
-    bool doOperation(bool a, bool b)
-    {
-        return !(a || b);
-    }
+    bool doOperation(bool a, bool b);
 };
 
-
+//this is the NOTOperator
+class NOTOperator
+{
+    public:
+    bool doOperation(bool a);
+};
 
 #endif
