@@ -2,36 +2,38 @@
 
 bool ANDOperator::doOperation(bool a, bool b)
 {
-    cout << "Using the AND Operator\n";
+    cout << "AND will output true only if both inputs are true\n";
     return a && b;
 }
 
 bool OROperator::doOperation(bool a, bool b)
 {
-    cout << "Using the OR Operator\n";
+    cout << "OR will output true when at least one input is true.\n";
     return a || b;
 }
 
 bool XOROperator::doOperation(bool a, bool b)
 {
-    cout << "Using the XOR Operator\n";
+    cout << "XOR will output true if inputs are different.\n";
+    cout << ""
     return a != b;
 }
 
 bool NANDOperator::doOperation(bool a, bool b)
 {
-    cout << "Using the NAND Operator\n";
+    cout << "NAND will output the opposite of AND, so NAND will output true if at least one input is true\n"; 
     return !(a && b);
 }
 
 bool NOROperator::doOperation(bool a, bool b)
 {
-    cout << "Using the NOR Operator\n";
+    cout << "NOR will output the opposite of OR, so NOR will output true if both inputs are false\n";
     return !(a || b);
 }
 
 bool NOTOperator::doOperation(bool a)
 {
-    cout << "Using the NOT Operator\n";
+    cout << "NOT basically reverses the inputs\n";
+    cout << "Ex: True will become False and False will become True\n";
     return !a;
 }
