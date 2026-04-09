@@ -9,11 +9,11 @@ class BooleanExpression
 {
     private:
     char A, B, C;
-    string Operator;
+    string operator1, operator2, operator3;
 
     public:
     void getInput();
-    bool calculateResult(bool A, bool B);
+    bool calculateResult(bool A, bool B, bool C, bool &step1, bool &notValue);
 };
 
 #endif
