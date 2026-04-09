@@ -18,27 +18,6 @@ class OROperator
     bool doOperation(bool a, bool b);
 };
 
-//this is the XOR operation
-class XOROperator
-{
-    public:
-    bool doOperation(bool a, bool b);
-};
-
-//this is the NAND operation
-class NANDOperator
-{
-    public:
-    bool doOperation(bool a, bool b);
-};
-
-//this is the NOROperator
-class NOROperator
-{
-    public:
-    bool doOperation(bool a, bool b);
-};
-
 //this is the NOTOperator
 class NOTOperator
 {
