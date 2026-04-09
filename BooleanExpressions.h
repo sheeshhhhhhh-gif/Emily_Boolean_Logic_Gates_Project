@@ -1,5 +1,5 @@
-#ifndef BOOLEANEXPRESSION_H
-#define BOOLEANEXPRESSION_H
+#ifndef BOOLEANEXPRESSIONS_H
+#define BOOLEANEXPRESSIONS_H
 
 #include <iostream>
 #include "BooleanOperator.h"
@@ -8,12 +8,12 @@ using namespace std;
 class BooleanExpression
 {
     private:
-    char A, B, C;
-    string operator1, operator2, operator3;
+    string operator1, operator2;
+    bool notA, notB, notC;
 
     public:
     void getInput();
-    bool calculateResult(bool A, bool B, bool C, bool &step1, bool &notValue);
+    bool calculateResult(bool A, bool B, bool C);
 };
 
 #endif
