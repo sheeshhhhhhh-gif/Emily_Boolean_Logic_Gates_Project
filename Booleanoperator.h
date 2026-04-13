@@ -4,6 +4,13 @@
 #include <iostream>
 using namespace std;
 
+//this is the base class 
+class BooleanOperator
+{
+    public:
+    virtual bool doOperation(bool a, bool b);
+};
+
 //this is the AND operation
 class ANDOperator
 {
