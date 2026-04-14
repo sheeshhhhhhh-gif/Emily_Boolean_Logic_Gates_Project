@@ -5,23 +5,21 @@ using namespace std;
 
 BooleanExpression::BooleanExpression()
 {
-    firstChar=' ';
-    secondChar=' ';
-    thirdChar=' ';
+    firstChar = ' ';
+    secondChar = ' ';
+    thirdChar = ' ';
 }
 
 bool getValue(char value, bool A, bool B, bool C)
 {
-    if (value== 'A')
+    if (value=='A')
     {
         return A;
     }
-
     if (value=='B')
     {
         return B;
     }
-
     return C;
 }
 
@@ -31,17 +29,19 @@ void BooleanExpression::getInput()
     cout << "Enter expression (A AND B OR C):\n";
 
     cin >> firstChar >> firstOperator >> secondChar >> secondOperator >> thirdChar;
+
+    cout << "\nOperators Detected:\n";
+    cout << "- " << firstOperator << "\n";
+    cout << "- " << secondOperator << "\n";
 }
 
 bool BooleanExpression::calculateResult(bool A, bool B, bool C)
 {
-    bool value1=getValue(firstChar, A, B, C);
-    bool value2=getValue(secondChar, A, B, C);
-    bool value3=getValue(thirdChar, A, B, C);
+    bool value1 = getValue(firstChar, A, B, C);
+    bool value2 = getValue(secondChar, A, B, C);
+    bool value3 = getValue(thirdChar, A, B, C);
 
-    bool step1=false;
-
-     cout << "\nOperators Detected:\n";
+    bool step1 = false;
 
     if (firstOperator=="AND")
     {
