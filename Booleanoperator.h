@@ -9,6 +9,9 @@ class BooleanOperator
 {
     public:
     virtual bool doOperation(bool a, bool b);
+    {
+        return false;
+    }
 };
 
 //this is the AND operation
