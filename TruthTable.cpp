@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-void TruthTables::generate(BooleanExpression expression)
+void TruthTables::generate(BooleanExpression expr)
 {
     char choice;
     cout << "Would you like to save this expression and truth table to a file? (Y/N):"
