@@ -17,7 +17,7 @@ bool NOTOperator::doOperation(bool a)
 
 bool XOROperator::doOperation(bool a, bool b)
 {
-    return!=a;
+    return a!=b;
 }
 
 bool NANDOperator::doOperation(bool a, bool b)
