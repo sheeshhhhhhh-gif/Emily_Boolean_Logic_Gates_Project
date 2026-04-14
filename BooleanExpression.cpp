@@ -3,140 +3,112 @@
 
 using namespace std;
 
-BooleanExpression::BooleanExpression()
-{
-    firstChar=' ';
-    secondChar=' ';
-    thirdChar=' ';
-}
-
-bool getValue(char value, bool A, bool B, bool C)
-{
-    switch (value)
-    {
-        case 'A': return A;
-        case 'B': return B;
-        case 'C': return C;
-        default: return false;
-    }
-}
-
 void BooleanExpression::getInput()
 {
-    cout << "*** BOOLEAN SIMULATOR ***\n\n";
-    cout << "Enter expression (max 3 operators):\n";
+    cout << "*** BOOLEAN SIMULATOR ***\n";
+    cout << "Enter boolean expression (max 3 operators, variables A, B, C):\n";
 
-    cin >> firstChar >> firstOperator >> secondChar >> secondOperator >> thirdChar;
-    cout << firstChar << " " << firstOperator << " " << secondChar << " " << secondOperator << " " << thirdChar << endl;
+    getline(cin, expression);
 
     cout << "\nOperators Detected:\n";
-    cout << "- " << firstOperator << "\n";
-    cout << "- " << secondOperator << "\n";
+    printOperatorInfo(expression);
+}
 
-
-    if (firstOperator=="AND")
+void BooleanExpression::printOperatorInfo(string expr)
+{
+    if (expr.find("AND") != string::npos)
     {
         cout << "- AND: True only if both inputs are true\n";
     }
-    else if (firstOperator=="OR")
+
+    if (expr.find("OR") != string::npos)
     {
         cout << "- OR: True if at least one input is true\n";
     }
-    else if (firstOperator=="XOR")
+
+    if (expr.find("XOR") != string::npos)
     {
-        cout << "- XOR: True if both inputs are different\n";
+        cout << "- XOR: True if inputs are different\n";
     }
-    else if (firstOperator=="NAND")
+
+    if (expr.find("NAND") != string::npos)
     {
         cout << "- NAND: True if at least one input is false\n";
     }
-    else if (firstOperator=="NOR")
+
+    if (expr.find("NOR") != string::npos)
     {
-        cout << "- NOR: True if both values false\n";
+        cout << "- NOR: True if both inputs are false\n";
     }
-    else if (firstOperator=="NOT")
+
+    if (expr.find("NOT") != string::npos)
     {
         cout << "- NOT: Inverts the input\n";
     }
+}
 
+bool BooleanExpression::getValue(char value, bool A, bool B, bool C)
+{
+    if (value == 'A') 
+    {
+        return A;
+    }
+    if (value == 'B') 
+    {
+        return B;
+    }
+    if (value == 'C') 
+    {
+        return C;
+    }
+}
 
+bool BooleanExpression::evaluate(string expr, bool A, bool B, bool C)
+{
+    if(expr.front()=='(' && expr.back()==')')
+    {
+        return evaluate(expr.substr(1, expr.size() -2), A, B, C);
+    }
 
-     if (secondOperator=="AND")
+    if(expr.find("NOT ")==0)
     {
-        cout << "- AND: True only if both inputs are true\n";
+        return !evaluate(expr.substr(4), A, B, C);
     }
-    else if (secondOperator=="OR")
+
+    size_t pos;
+
+    if((pos=expr.find(" AND "))!=string::npos)
     {
-        cout << "- OR: True if at least one input is true\n";
+        return evaluate(expr.substr(0, pos), A, B, C) && evaluate(expr.substr(pos+5), A, B, C);
     }
-    else if (secondOperator=="XOR")
+
+    if((pos=expr.find(" OR "))!=string::npos)
     {
-        cout << "- XOR: True if both inputs are different\n";
+        return evaluate(expr.substr(0, pos), A, B, C) || evaluate(expr.substr(pos+4), A, B, C);
     }
-    else if (secondOperator=="NAND")
+
+    if((pos=expr.find(" XOR "))!=string::npos)
     {
-        cout << "- NAND: True if at least one input is false\n";
+        return evaluate(expr.substr(0, pos), A, B, C) != evaluate(expr.substr(pos+5), A, B, C);
     }
-    else if (secondOperator=="NOR")
+
+    if((pos=expr.find(" NAND "))!=string::npos)
     {
-        cout << "- NOR: True if both values false\n";
+        return !(evaluate(expr.substr(0, pos), A, B, C) || evaluate(expr.substr(pos+6), A, B, C));
     }
-    else if (secondOperator=="NOT")
+
+    if((pos=expr.find(" NOR "))!=string::npos)
     {
-        cout << "- NOT: Inverts the input\n";
+        return !(evaluate(expr.substr(0, pos), A, B, C) || evaluate(expr.substr(pos+5), A, B, C));
+    }
+
+    else
+    {
+        getValue(expr[0], A, B, C);
     }
 }
 
 bool BooleanExpression::calculateResult(bool A, bool B, bool C)
 {
-    bool value1 = getValue(firstChar, A, B, C);
-    bool value2 = getValue(secondChar, A, B, C);
-    bool value3 = getValue(thirdChar, A, B, C);
-
-    bool step1 = false;
-
-    if (firstOperator == "AND")
-    {
-        step1 = value1 && value2;
-    }
-    else if (firstOperator == "OR")
-    {
-        step1 = value1 || value2;
-    }
-    else if (firstOperator == "XOR")
-    {
-        step1 = value1 != value2;
-    }
-    else if (firstOperator == "NAND")
-    {
-        step1 = !(value1 && value2);
-    }
-    else if (firstOperator == "NOR")
-    {
-        step1 = !(value1 || value2);
-    }
-
-    
-    if (secondOperator == "AND")
-    {
-        return step1 && value3;
-    }
-    else if (secondOperator == "OR")
-    {
-        return step1 || value3;
-    }
-    else if (secondOperator == "XOR")
-    {
-        return step1 != value3;
-    }
-    else if (secondOperator == "NAND")
-    {
-        return !(step1 && value3);
-    }
-    else if (secondOperator == "NOR")
-    {
-        return !(step1 || value3);
-    }
-
-    return false;
+    return evaluate(expression, A, B, C);
 }

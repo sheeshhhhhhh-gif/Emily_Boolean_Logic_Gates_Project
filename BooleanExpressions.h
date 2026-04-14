@@ -6,18 +6,17 @@ using namespace std;
 
 class BooleanExpression
 {
-private:
-char firstChar;
-char secondChar;
-char thirdChar;
+    private:
+    string expression;
 
-string firstOperator;
-string secondOperator;
+    public:
+    void getInput();
+    bool calculateResult(bool A, bool B, bool C);
 
-public:
-BooleanExpression();
-void getInput();
-bool calculateResult(bool A, bool B, bool C);
+    private:
+    bool evaluate (string expr, bool A, bool B, bool C);
+    bool getValue (char value, bool A, bool B, bool C);
+    void printOperatorInfo(string expr);
 };
 
 #endif

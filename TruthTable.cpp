@@ -28,12 +28,12 @@ void runTruthTable(BooleanExpression &expr)
         cout << "| " << rows[i] << " |\n";
     }
 
-  
+
     char choice;
     cout << "\nSave to file? (Y/N): ";
     cin >> choice;
 
-    if (choice=='Y' || choice=='y')
+    if (choice == 'Y' || choice == 'y')
     {
         string filename;
         cout << "Enter filename: ";
@@ -44,9 +44,7 @@ void runTruthTable(BooleanExpression &expr)
         file << "A B C RESULT\n";
 
         for (int i = 0; i < 8; i++)
-        {
             file << rows[i] << "\n";
-        }
 
         file.close();
 
