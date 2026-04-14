@@ -13,6 +13,7 @@ class BooleanExpression
     bool useNOT;
 
     public:
+    BooleanExpression();
     void getInput();
     bool calculateResult(bool A, bool B, bool C, bool &step1, bool &step2, bool &notValue);
 };
