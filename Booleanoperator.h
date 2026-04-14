@@ -32,4 +32,23 @@ class NOTOperator
     bool doOperation(bool a);
 };
 
+class XOROperator
+{
+    public:
+    bool doOperation(bool a, bool b);
+};
+
+class NANDOperator
+{
+    public:
+    bool doOperation(bool a, bool b);
+};
+
+class NOROperator
+{
+    public:
+    bool doOperation(bool a, bool b);
+};
+
+
 #endif
