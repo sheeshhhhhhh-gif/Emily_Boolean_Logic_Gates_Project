@@ -9,7 +9,8 @@ class TruthTable
     BooleanExpression expression;
 
     public:
-    void start();
+    void setExpression(BooleanExpression expression);
+    void generate();
 };
 
 #endif
