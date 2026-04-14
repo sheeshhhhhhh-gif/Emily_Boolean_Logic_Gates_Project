@@ -17,6 +17,7 @@ void runTruthTable(BooleanExpression &expr)
         bool result=expr.calculateResult(A, B, C);
 
         rows[i]=to_string(A) + " | " + to_string(B) + " | " + to_string(C) + " | " + to_string(result);
+        
     }
 
     cout << "\n| A | B | C | RESULT |\n";

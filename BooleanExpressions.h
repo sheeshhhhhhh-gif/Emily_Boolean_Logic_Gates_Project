@@ -7,17 +7,17 @@ using namespace std;
 class BooleanExpression
 {
 private:
-    char firstChar;
-    char secondChar;
-    char thirdChar;
+char firstChar;
+char secondChar;
+char thirdChar;
 
-    string firstOperator;
-    string secondOperator;
+string firstOperator;
+string secondOperator;
 
 public:
-    BooleanExpression();
-    void getInput();
-    bool calculateResult(bool A, bool B, bool C);
+BooleanExpression();
+void getInput();
+bool calculateResult(bool A, bool B, bool C);
 };
 
 #endif
