@@ -3,6 +3,6 @@
 
 #include "BooleanExpressions.h"
 
-void runTruthTable(BooleanExpression& expr); 
+void runTruthTable(BooleanExpression &expr);
 
 #endif

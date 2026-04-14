@@ -4,25 +4,9 @@
 
 using namespace std;
 
-void runTruthTable(BooleanExpression& expr)
+void runTruthTable(BooleanExpression &expr)
 {
-    char choice;
-
-    cout << "Save to file? (Y/N): ";
-    cin >> choice;
-
-    ofstream file;
-
-    if (choice=='Y' || choice=='y')
-    {
-        string filename;
-        cout << "Enter filename: ";
-        cin >> filename;
-        file.open(filename);
-    }
-
-    cout << "\n| A | B | C | RESULT |\n";
-    cout << "|---|---|---|--------|\n";
+    string rows[8]; //truth table with 3 inputs have like 8 lines
 
     for (int i = 0; i < 8; i++)
     {
@@ -32,17 +16,39 @@ void runTruthTable(BooleanExpression& expr)
 
         bool result=expr.calculateResult(A, B, C);
 
-        cout << "| " << A << " | " << B << " | " << C << " | " << result << " |\n";
-
-        if (file.is_open())
-        {
-            file << "| " << A << " | " << B << " | " << C << " | " << result << " |\n";
-        }
+        rows[i]=to_string(A) + " | " + to_string(B) + " | " + to_string(C) + " | " + to_string(result);
     }
 
-    if (file.is_open())
+    cout << "\n| A | B | C | RESULT |\n";
+    cout << "|---|---|---|--------|\n";
+
+    for (int i = 0; i < 8; i++)
     {
+        cout << "| " << rows[i] << " |\n";
+    }
+
+  
+    char choice;
+    cout << "\nSave to file? (Y/N): ";
+    cin >> choice;
+
+    if (choice=='Y' || choice=='y')
+    {
+        string filename;
+        cout << "Enter filename: ";
+        cin >> filename;
+
+        ofstream file(filename);
+
+        file << "A B C RESULT\n";
+
+        for (int i = 0; i < 8; i++)
+        {
+            file << rows[i] << "\n";
+        }
+
         file.close();
-        cout << "\nSaved successfully!\n";
+
+        cout << "Saved successfully!\n";
     }
 }

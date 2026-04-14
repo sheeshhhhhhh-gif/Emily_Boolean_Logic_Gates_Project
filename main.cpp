@@ -3,15 +3,12 @@
 
 using namespace std;
 
-void runTruthTable(BooleanExpression& expr); 
+void runTruthTable(BooleanExpression &expr);
 
 int main()
 {
+    cout << "PROGRAM STARTED\n\n";
     BooleanExpression expr;
-
-    expr.getInput();  
-
+    expr.getInput();
     runTruthTable(expr);
-
-    return 0;
 }
