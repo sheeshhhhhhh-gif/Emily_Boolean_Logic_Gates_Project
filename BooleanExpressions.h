@@ -2,20 +2,25 @@
 #define BOOLEANEXPRESSIONS_H
 
 #include <string>
-#include "BooleanOperator.h"
 using namespace std;
 
 class BooleanExpression
 {
     private:
-    char firstChar, secondChar, thirdChar, fourthChar;
-    string firstOperator, secondOperator, thirdOperator; 
-    bool useNOT;
+    char firstChar;
+    char secondChar;
+    char thirdChar;
+    char fourthChar;
 
+    string firstOperator;
+    string secondOperator; 
+    
+    bool useNOT;
+    
     public:
     BooleanExpression();
     void getInput();
-    bool calculateResult(bool A, bool B, bool C, bool &step1, bool &step2, bool &notValue);
+    bool calculateResult(bool A, bool B, bool C);
 };
 
 #endif

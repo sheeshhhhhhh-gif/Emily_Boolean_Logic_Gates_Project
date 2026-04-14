@@ -1,11 +1,17 @@
+#include <iostream>
 #include "BooleanExpressions.h"
 
-void runTruthTable(BooleanExpression expr);
+using namespace std;
+
+void runTruthTable(BooleanExpression& expr); 
 
 int main()
 {
-    BooleanExpression expr; 
-    runTruthTable(expr);     
+    BooleanExpression expr;
+
+    expr.getInput();  
+
+    runTruthTable(expr);
 
     return 0;
 }

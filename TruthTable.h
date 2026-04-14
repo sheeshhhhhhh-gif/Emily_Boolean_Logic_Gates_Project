@@ -3,14 +3,6 @@
 
 #include "BooleanExpressions.h"
 
-class TruthTable
-{
-    private:
-    BooleanExpression expression;
-
-    public:
-    void setExpression(BooleanExpression expression);
-    void generate();
-};
+void runTruthTable(BooleanExpression& expr); 
 
 #endif
