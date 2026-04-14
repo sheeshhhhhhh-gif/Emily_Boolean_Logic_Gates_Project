@@ -1,11 +1,20 @@
 #include "TruthTable.h"
 #include <iostream>
-#include <fstream>
 using namespace std;
 
-void TruthTable::start()
+void TruthTables::generate(BooleanExpression expression)
 {
-    expression.getInput();
+    char choice;
+    cout << "Would you like to save this expression and truth table to a file? (Y/N):"
+    cin >> choice;
 
-    cout << "\nA B C"
+    ofstream file;
+    string filename;
+
+    if(choice=='Y' || choice=='y')
+    {
+        cout << "Enter filename: ";
+        cin >> filename;
+        file.open(filename);
+    }
 }
