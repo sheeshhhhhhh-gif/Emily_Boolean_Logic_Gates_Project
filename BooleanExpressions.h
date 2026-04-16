@@ -17,6 +17,7 @@ class BooleanExpression
     bool evaluate (string expr, bool A, bool B, bool C);
     bool getValue (char value, bool A, bool B, bool C);
     void printOperatorInfo(string expr);
+    string trim(string s); //remove all whitespaces
 };
 
 #endif

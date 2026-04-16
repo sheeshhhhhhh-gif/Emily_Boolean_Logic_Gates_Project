@@ -3,6 +3,17 @@
 
 using namespace std;
 
+string BooleanExpression::trim(string s)
+{
+    size_t start = 0;
+    while (start < s.size() && s[start] == ' ') start++;
+
+    size_t end = s.size();
+    while (end > start && s[end - 1] == ' ') end--;
+
+    return s.substr(start, end - start);
+}
+
 void BooleanExpression::getInput()
 {
     cout << "*** BOOLEAN SIMULATOR ***\n";
@@ -65,9 +76,12 @@ bool BooleanExpression::getValue(char value, bool A, bool B, bool C)
 
 bool BooleanExpression::evaluate(string expr, bool A, bool B, bool C)
 {
-    if(expr.front()=='(' && expr.back()==')')
+
+    expr=trim(expr);
+
+    if (!expr.empty() && expr.front() == '(' && expr.back() == ')')
     {
-        return evaluate(expr.substr(1, expr.size() -2), A, B, C);
+        return evaluate(expr.substr(1, expr.size() - 2), A, B, C);
     }
 
     if(expr.find("NOT ")==0)
@@ -102,9 +116,17 @@ bool BooleanExpression::evaluate(string expr, bool A, bool B, bool C)
         return !(evaluate(expr.substr(0, pos), A, B, C) || evaluate(expr.substr(pos+5), A, B, C));
     }
 
-    else
+    if(expr=="A")
     {
-        getValue(expr[0], A, B, C);
+        return A;
+    }
+    if(expr=="B")
+    {
+        return B;
+    }
+    if(expr=="C")
+    {
+        return C;
     }
 }
 

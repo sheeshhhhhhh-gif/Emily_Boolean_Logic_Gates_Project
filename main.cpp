@@ -11,4 +11,5 @@ int main()
     BooleanExpression expr;
     expr.getInput();
     runTruthTable(expr);
+    return 0;
 }
