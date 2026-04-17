@@ -30,24 +30,37 @@ void runTruthTable(BooleanExpression &expr)
 
 
     char choice;
-    cout << "\nSave to file? (Y/N): ";
-    cin >> choice;
-
-    if (choice == 'Y' || choice == 'y')
+    
+    while (true)
     {
-        string filename;
-        cout << "Enter filename: ";
-        cin >> filename;
+        cout << "\nSave to file? (Y/N): ";
+        cin >> choice;
 
-        ofstream file(filename);
+        if (choice == 'Y' || choice == 'y')
+        {
+            string filename;
+            cout << "Enter filename: ";
+            cin >> filename;
 
-        file << "A B C RESULT\n";
+            ofstream file(filename);
+            file << "A B C RESULT\n";
 
-        for (int i = 0; i < 8; i++)
-            file << rows[i] << "\n";
+            for (int i = 0; i < 8; i++)
+                file << rows[i] << "\n";
 
-        file.close();
+            file.close();
 
-        cout << "Saved successfully!\n";
-    }
+            cout << "Saved successfully!\n";
+            break; 
+        }
+        else if (choice == 'N' || choice == 'n')
+        {
+            cout << "File not saved\n";
+            break; 
+        }
+        else
+        {  
+            cout << "Invalid choice, please enter either Y or N.\n";
+        }
+}
 }
